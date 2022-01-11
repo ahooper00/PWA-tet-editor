@@ -4,6 +4,7 @@ const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
+const { StaleWhileRevalidate } = require("workbox-strategies");
 
 precacheAndRoute(self.__WB_MANIFEST);
 
@@ -30,14 +31,31 @@ registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 registerRoute(
 
   // Define the callback function that will filter the requests we want to cache
-  ({ request }) => ['style', 'script', 'worker'].includes(request.destination),
-  new StaleWhaleRevalidate({
+  ({ request }) => ['style', 'script', 'worker', 'manifest'].includes(request.destination),
+  new StaleWhileRevalidate({
     // Name of the cache storage
     cacheName: 'asset-cache',
     plugins: [
       // This plugin will cache response with these headers to a max-age of 30 days
       new CacheableResponsePlugin({
         statuses: [0, 200],
+      }),
+    ],
+  })
+);
+
+// Cache Images
+registerRoute(
+  ({ request }) => request.destination === "image",
+  new CacheFirst({
+    cacheName: "images",
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60,
       }),
     ],
   })
