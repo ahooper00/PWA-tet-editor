@@ -20,7 +20,7 @@ npm run start
 ## Contributing
 To contribute to the project, simply perform a git clone of the repository. For any changes made, a pull request is required, and I will determine whether to merge the changes or not.
 ## Application
-- Heroku: 
+- Heroku: [Deployed-application](https://just-another-text-editor-pwa.herokuapp.com/)
 - GitHub repo: [PWA-text-editor](https://github.com/ahooper00/PWA-text-editor)
 
 ![screenshot](Assets/screenshot.png)
