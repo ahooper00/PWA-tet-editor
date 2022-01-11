@@ -22,6 +22,7 @@ To contribute to the project, simply perform a git clone of the repository. For 
 ## Application
 - Heroku: [Deployed-application](https://just-another-text-editor-pwa.herokuapp.com/)
 - GitHub repo: [PWA-text-editor](https://github.com/ahooper00/PWA-text-editor)
+- Demo: [Demo](https://drive.google.com/file/d/16jRmT_sSYYGeoo6Fu84K0qu-Ftmlq8Iw/view)
 
 ![screenshot](Assets/screenshot.png)
 ![screenshot-2](Assets/screenshot-2.png)
